@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'filter'
+    'filter',
+    'crispy_forms'
 ]
 
 MIDDLEWARE = [
@@ -121,3 +122,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 #STATICFILES_DIRS
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+LOGIN_URL = 'mysite_login'
+LOGOUT_URL = 'mysite_logout'
+LOGIN_REDIRECT_URL = 'profile_list'
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
