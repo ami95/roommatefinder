@@ -5,6 +5,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 import datetime
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+
 # Create your models here.
 
 class Profile(models.Model):
@@ -31,6 +32,7 @@ class Profile(models.Model):
     is_smoker = models.BooleanField(default = False)
     has_pets = models.BooleanField(default = False)
     is_visible = models.BooleanField(default = False)
+    image = models.ImageField(upload_to='profilepics', blank=True)
 
     class Meta:
         verbose_name = 'Profile'
