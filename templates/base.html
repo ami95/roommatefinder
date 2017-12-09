@@ -2,11 +2,55 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/navbar.css">
   </head>
   <body>
-    {% block body %}
-    {% endblock %}
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+     <a class="navbar-brand" href="#">HSFCL</a>
+     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+       <span class="navbar-toggler-icon"></span>
+     </button>
+     <div class="collapse navbar-collapse" id="navbarCollapse">
+       <ul class="navbar-nav mr-auto">
+         <li class="nav-item active">
+           <a class="nav-link" href="a">Home</a>
+         </li>
+         <li class="nav-item">
+           <a class="nav-link" href="myprofile">My Profile</a>
+         </li>
+         <li class="nav-item">
+           <a class="nav-link" href="{{profile_list.url}}">Find a roommate!</a>
+         </li>
+       </ul>
+       <form class="form-inline mt-2 mt-md-0">
+         {% if user.is_authenticated %}
+           <button class="btn btn-outline-success my-2 my-sm-0">Hello {{ user.first_name }}</button>
+         {% else %}
+           <a href="login" class="btn btn-outline-success my-2 my-sm-0" role="button">Login</a>
+         {% endif %}
+        <!-- <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+       </form>
+     </div>
+   </nav>
+   <main role="main" class="container">
+      <div class="jumbotron">
+        {% block body %}
+        {% endblock %}
+      </div>
+    </main>
+
   </body>
 </html>
+
+<!--
+    Navbars require a wrapping .navbar with .navbar-expand{-sm|-md|-lg|-xl} for responsive collapsing and color scheme classes.
+    Navbars and their contents are fluid by default. Use optional containers to limit their horizontal width.
+    Use our spacing and flex utility classes for controlling spacing and alignment within navbars.
+    Navbars are responsive by default, but you can easily modify them to change that. Responsive behavior depends on our Collapse JavaScript plugin.
+    Navbars are hidden by default when printing. Force them to be printed by adding .d-print to the .navbar. See the display utility class.
+    Ensure accessibility by using a <nav> element or, if using a more generic element such as a <div>, add a role="navigation" to every navbar to explicitly identify it as a landmark region for users of assistive technologies.
+-->
