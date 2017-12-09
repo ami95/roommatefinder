@@ -16,20 +16,21 @@
      <div class="collapse navbar-collapse" id="navbarCollapse">
        <ul class="navbar-nav mr-auto">
          <li class="nav-item active">
-           <a class="nav-link" href="a">Home</a>
+           <a class="nav-link" href="{% url 'profile_list' %}">Home</a>
          </li>
          <li class="nav-item">
-           <a class="nav-link" href="myprofile">My Profile</a>
+           <a class="nav-link" href="{% url 'myprofile' %}">My Profile</a>
          </li>
          <li class="nav-item">
-           <a class="nav-link" href="{{profile_list.url}}">Find a roommate!</a>
+           <a class="nav-link" href="{% url 'profile_list' %}">Find a roommate!</a>
          </li>
        </ul>
        <form class="form-inline mt-2 mt-md-0">
          {% if user.is_authenticated %}
            <button class="btn btn-outline-success my-2 my-sm-0">Hello {{ user.first_name }}</button>
+           <a href="logout" class="btn btn-outline-success my-2 my-sm-0" role="button">Log out</a>
          {% else %}
-           <a href="login" class="btn btn-outline-success my-2 my-sm-0" role="button">Login</a>
+         <a href="{% url 'login' %}" class="btn btn-outline-success my-2 my-sm-0" role="button">Login</a>
          {% endif %}
         <!-- <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
