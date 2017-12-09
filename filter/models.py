@@ -32,7 +32,7 @@ class Profile(models.Model):
     is_smoker = models.BooleanField(default = False)
     has_pets = models.BooleanField(default = False)
     is_visible = models.BooleanField(default = False)
-    image = models.ImageField(upload_to='profilepics', blank=True)
+    image = models.ImageField(upload_to='profilepics', default='profilepics/cat.jpeg')
 
     class Meta:
         verbose_name = 'Profile'
