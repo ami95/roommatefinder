@@ -10,6 +10,7 @@ from .forms import UserForm, ProfileForm
 from django.contrib import messages
 # Create your views here.
 
+
 def signup(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
