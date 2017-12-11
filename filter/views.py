@@ -57,3 +57,7 @@ def update_profile(request):
 def profile_detail(request, pk):
     user = get_object_or_404(User, pk=pk)
     return render(request, 'filter/profile_detail.html', {'user': user})
+
+def render_home(request):
+    myProfile = User.objects.all()
+    return render(request, 'filter/home.html')
