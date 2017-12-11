@@ -11,13 +11,14 @@
             <ul>
               <li>{{ user.get_full_name }}</li>
               <li>{{user.profile.ocupation}}</li>
+              <a href="profile/{{user.id}}/" class="btn btn-info" role="button">View profile</a>
+
               <br><br>
             </ul>
           </div>
           <div class="col-sm-8" style="background-color:lightblue;border: 2px solid black; border-radius: 5px">{{user.profile.description}}
-        </div>
+      </div>
         </div>
     </div><br><br>
     {% endfor %}
 {% endblock %}
- style=

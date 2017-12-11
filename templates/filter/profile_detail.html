@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block body %}
+    <div class="container">
+      <h2>You are visiting {{ user.get_full_name }}'s page</h2>
+        <ul class="list-unstyled">
+          <img src="{{ user.profile.image.url }}" width="200", height="220">
+      <ul>
+        <li>Username: {{ user.username }}</li>
+        <li>Gender: {{ user.profile.gender }}</li>
+        <li>Birth Date: {{ user.profile.dob }}</li>
+        <li>City: {{ user.profile.city}}</li>
+        <li>Description: {{user.profile.description}}</li>
+        <li>Ocupation: {{user.profile.ocupation}}</li>
+        <li>Monthly Budget: {{user.profile.monthly_budget}}</li>
+        <li>Tydiness level: {{user.profile.tidyness_lvl}}</li>
+        <li>Guests level: {{user.profile.guests_lvl}}</li>
+        <li>Temperament: {{user.profile.temperament}}</li>
+        <li>Smoker: {{user.profile.is_smoker}}</li>
+        <li>Has pets: {{user.profile.has_pets}}</li>
+        <li>Available: {{user.profile.is_visible}}</li>
+      </ul>
+      <h3>Would you like {{user.first_name}} to be your roommate?</h3>
+      <a href="#" class="btn btn-success" role="button">Yes</a>
+      <a href="#" class="btn btn-danger" role="button">No</a>
+    </div>
+{% endblock %}

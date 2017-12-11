@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.forms import UserCreationForm
 from .models import Profile
 from django.contrib.auth.models import User
@@ -53,3 +53,7 @@ def update_profile(request):
         'user_form': user_form,
         'profile_form': profile_form
     })
+
+def profile_detail(request, pk):
+    user = get_object_or_404(User, pk=pk)
+    return render(request, 'filter/profile_detail.html', {'user': user})
