@@ -15,7 +15,7 @@ class Profile(models.Model):
     gender = models.CharField(max_length=12, choices=GENDER_CHOICES, default='Unspecified')
     city = models.CharField(max_length=100, default='Braşov')
     description = models.TextField()
-    ocupation = models.CharField(max_length=100, default='Student')
+    ocupation = models.CharField(max_length=100, default='Unspecified')
     monthly_budget = models.IntegerField(default=500, validators=[
                                                         MaxValueValidator(10000),
                                                         MinValueValidator(1)])
