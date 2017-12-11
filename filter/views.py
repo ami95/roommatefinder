@@ -20,16 +20,18 @@ def signup(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
-            return redirect('profile_list')
+            return redirect('render_home')
     else:
         form = UserCreationForm()
     return render(request, 'filter/signup.html', {'form': form})
 
+@login_required
 def my_profile(request):
     myProfile = User.objects.all()
     return render(request, 'filter/myprofile.html')
 
-def profile_list(request):
+@login_required
+def search(request):
     users = User.objects.all()
     return render(request, 'filter/profilelist.html', {'users':users})
 
@@ -54,10 +56,12 @@ def update_profile(request):
         'profile_form': profile_form
     })
 
+@login_required
 def profile_detail(request, pk):
     user = get_object_or_404(User, pk=pk)
     return render(request, 'filter/profile_detail.html', {'user': user})
 
+@login_required
 def render_home(request):
     myProfile = User.objects.all()
     return render(request, 'filter/home.html')

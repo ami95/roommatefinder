@@ -128,5 +128,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 LOGIN_URL = 'mysite_login'
 LOGOUT_URL = 'mysite_logout'
-LOGIN_REDIRECT_URL = 'profile_list'
+LOGIN_REDIRECT_URL = 'render_home'
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
