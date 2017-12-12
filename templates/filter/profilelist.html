@@ -1,24 +1,54 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
+
+{% block head %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>{% block title %}{% endblock %}</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/navbar.css">
+{% endblock %}
 
 {% block body %}
-<h2>Latest Roommates</h2>
-  <ul class="list-unstyled">
-    {% for user in users %}
-    <div class="container">
-        <div class="row" >
-          <div class="col-sm-1"></div>
-          <div class="col-sm-3" style="background-color:lightblue;height:270px;border: 2px solid black; border-radius: 5px" ><img src="{{ user.profile.image.url }}" width="200", height="220">
-            <ul>
-              <li>{{ user.get_full_name }}</li>
-              <li>{{user.profile.ocupation}}</li>
-              <a href="profile/{{user.id}}/" class="btn btn-info" role="button">View profile</a>
-
-              <br><br>
-            </ul>
+<div class="container">
+	<div class="row">
+		<div class="col-lg-3 col-md-6 col-md-offset-3 col-lg-offset-0">
+      <div class="well">
+      <h3 align="center">Search Filter</h3>
+        <form class="form-horizontal">
+          <div class="form-group">
+            <label for="location1" class="control-label">Location</label>
+            <select class="form-control" name="" id="location1">
+              <option value="">Any</option>
+              <option value="">1</option>
+              <option value="">2</option>
+            </select>
           </div>
-          <div class="col-sm-8" style="background-color:lightblue;border: 2px solid black; border-radius: 5px">{{user.profile.description}}
+          <div class="form-group">
+            <label for="type1" class="control-label">Type</label>
+            <select class="form-control" name="" id="type1">
+              <option value="">Any</option>
+              <option value="">1</option>
+              <option value="">2</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="pricefrom" class="control-label">Min Price</label>
+            <div class="input-group">
+              <div class="input-group-addon" id="basic-addon1">$</div>
+              <input type="text" class="form-control" id="pricefrom" aria-describedby="basic-addon1">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="priceto" class="control-label">Max Price</label>
+            <div class="input-group">
+              <div class="input-group-addon" id="basic-addon2">$</div>
+              <input type="text" class="form-control" id="priceto" aria-describedby="basic-addon1">
+            </div>
+          </div>
+        <!--  <p class="text-center"><a href="#" class="btn btn-danger glyphicon glyphicon-search" role="button"></a></p> -->
+        </form>
       </div>
-        </div>
-    </div><br><br>
-    {% endfor %}
+    </div>
+	</div>
+</div>
 {% endblock %}

@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 from django.db import transaction
 from .forms import UserForm, ProfileForm
 from django.contrib import messages
+from .filters import UserFilter, ProfileFilter
 # Create your views here.
 
 
@@ -65,3 +66,10 @@ def profile_detail(request, pk):
 def render_home(request):
     myProfile = User.objects.all()
     return render(request, 'filter/home.html')
+
+
+@login_required
+def search(request):
+    user_list = User.objects.all()
+    user_filter = ProfileFilter(request.GET, queryset=user_list)
+    return render(request, 'filter/user_list.html', {'filter': user_filter})
