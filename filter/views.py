@@ -31,11 +31,6 @@ def my_profile(request):
     return render(request, 'filter/myprofile.html')
 
 @login_required
-def search(request):
-    users = User.objects.all()
-    return render(request, 'filter/profilelist.html', {'users':users})
-
-@login_required
 @transaction.atomic
 def update_profile(request):
     if request.method == 'POST':
@@ -55,6 +50,11 @@ def update_profile(request):
         'user_form': user_form,
         'profile_form': profile_form
     })
+
+@login_required
+def search(request):
+    users = User.objects.all()
+    return render(request, 'filter/search.html', {'users': users})
 
 @login_required
 def profile_detail(request, pk):
